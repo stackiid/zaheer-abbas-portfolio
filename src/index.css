@@ -67,14 +67,24 @@ body {
   color: var(--color-paper);
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-ink);
-  outline-offset: 3px;
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+
+  /* Dark sections need a light focus ring, handled via .on-dark */
+  .on-dark :focus-visible {
+    outline-color: var(--color-cloud);
+  }
 }
 
-/* Dark sections need a light focus ring, handled via .on-dark */
-.on-dark :focus-visible {
-  outline-color: var(--color-cloud);
+/* Dual-mode contact form inputs: explicitly guarantee no focus
+   border/outline can appear here, independent of the sitewide
+   accessible focus ring above (kept everywhere else on the site). */
+.contact-input:focus,
+.contact-input:focus-visible {
+  outline: none;
 }
 
 /* ---------------------------------------------------------------------- */

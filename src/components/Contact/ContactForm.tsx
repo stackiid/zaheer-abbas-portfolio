@@ -102,28 +102,28 @@ export function ContactForm() {
       <div
         role="group"
         aria-label="Choose how to get in touch"
-        className="mb-8 inline-flex w-full items-center gap-1 rounded-full border border-ink/15 bg-white p-1"
+        className="mb-8 flex w-full divide-x divide-ink border border-ink"
       >
         <button
           type="button"
           aria-pressed={mode === 'email'}
           onClick={() => switchMode('email')}
-          className={`flex flex-1 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
-            mode === 'email' ? 'bg-ink text-paper' : 'text-muted hover:text-ink'
+          className={`flex flex-1 items-center justify-center gap-2 px-4 py-3 text-sm font-semibold transition-colors ${
+            mode === 'email' ? 'bg-ink text-paper' : 'bg-white text-ink hover:bg-paper'
           }`}
         >
-          <FontAwesomeIcon icon={faEnvelope} className="text-xs" aria-hidden="true" />
+          <FontAwesomeIcon icon={faEnvelope} className="text-base" aria-hidden="true" />
           Email
         </button>
         <button
           type="button"
           aria-pressed={mode === 'whatsapp'}
           onClick={() => switchMode('whatsapp')}
-          className={`flex flex-1 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
-            mode === 'whatsapp' ? 'bg-ink text-paper' : 'text-muted hover:text-ink'
+          className={`flex flex-1 items-center justify-center gap-2 px-4 py-3 text-sm font-semibold transition-colors ${
+            mode === 'whatsapp' ? 'bg-ink text-paper' : 'bg-white text-ink hover:bg-paper'
           }`}
         >
-          <FontAwesomeIcon icon={faWhatsapp} className="text-xs" aria-hidden="true" />
+          <FontAwesomeIcon icon={faWhatsapp} className="text-base" aria-hidden="true" />
           WhatsApp
         </button>
       </div>
@@ -143,7 +143,7 @@ export function ContactForm() {
             'aria-invalid': Boolean(error),
             'aria-describedby': error ? `contact-${field.name}-error` : undefined,
             className:
-              'w-full border-b border-ink/40 bg-transparent pb-3 text-sm text-ink placeholder:text-muted/70 placeholder:tracking-[0.08em] focus:border-ink focus:outline-none focus-visible:outline-none transition-colors',
+              'contact-input w-full border-b border-ink/40 bg-transparent pb-3 text-sm text-ink placeholder:text-muted/70 placeholder:tracking-[0.08em] focus:border-ink focus:outline-none focus-visible:outline-none transition-colors',
           }
 
           return (
