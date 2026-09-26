@@ -18,20 +18,25 @@ export function Header() {
             <Logo />
           </span>
 
-          <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
-            {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={link.href}
-                className="font-display text-xs font-semibold tracking-[0.15em] text-cloud/85 transition-colors hover:text-cloud"
-              >
-                {link.label.toUpperCase()}
-              </a>
-            ))}
-          </nav>
+          <div className="hidden items-center gap-8 lg:flex">
+            <nav aria-label="Primary" className="flex items-center gap-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.id}
+                  href={link.href}
+                  className="font-display text-xs font-semibold tracking-[0.15em] text-cloud/85 transition-colors hover:text-cloud"
+                >
+                  {link.label.toUpperCase()}
+                </a>
+              ))}
+            </nav>
 
-          <div className="hidden lg:block">
-            <PillButton as="a" href="#contact" variant="solid" className="bg-cloud text-ink hover:bg-white">
+            <PillButton
+              as="a"
+              href="#contact"
+              variant="solid"
+              className="bg-cloud text-ink hover:bg-white hover:text-ink"
+            >
               Contact me
             </PillButton>
           </div>

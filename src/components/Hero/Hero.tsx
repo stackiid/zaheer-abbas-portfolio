@@ -37,7 +37,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 hidden lg:block"
         style={{
           background: 'var(--color-ink)',
-          clipPath: 'polygon(45% 0, 100% 0, 100% 100%, 39% 100%)',
+          clipPath: 'polygon(63% 0, 100% 0, 100% 100%, 57% 100%)',
         }}
         aria-hidden="true"
       />
@@ -46,7 +46,7 @@ export function Hero() {
 
       <div className="relative mx-auto flex min-h-screen max-w-[1680px] flex-col lg:min-h-[860px] lg:flex-row">
         {/* Text column */}
-        <div className="relative z-10 flex flex-1 flex-col justify-center gap-6 px-6 pb-0 pt-28 sm:px-10 lg:w-[44%] lg:flex-none lg:px-16 lg:pt-32 xl:px-20">
+        <div className="relative z-10 flex flex-1 flex-col justify-center gap-6 px-6 pb-0 pt-28 sm:px-10 lg:w-[58%] lg:flex-none lg:px-16 lg:pt-32 xl:px-20">
           <p data-hero-eyebrow className="font-sans text-base text-muted lg:text-muted">
             Hi, I am
           </p>
@@ -70,7 +70,7 @@ export function Hero() {
         </div>
 
         {/* Portrait column */}
-        <div className="relative flex flex-1 items-end justify-center lg:w-[56%] lg:flex-none lg:items-end">
+        <div className="relative flex flex-1 items-end justify-center lg:w-[42%] lg:flex-none lg:items-end">
           <img
             data-hero-image
             src={portrait}

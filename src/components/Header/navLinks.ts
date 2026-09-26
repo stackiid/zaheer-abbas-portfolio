@@ -10,5 +10,4 @@ export const navLinks: NavLink[] = [
   { id: 'skills', label: 'Skills', href: '#skills' },
   { id: 'experience', label: 'Experience', href: '#experience' },
   { id: 'projects', label: 'Portfolio', href: '#projects' },
-  { id: 'testimonials', label: 'Testimonials', href: '#testimonials' },
 ]

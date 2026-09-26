@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Loader } from '@/components/Loader/Loader'
+import { StickyHeader } from '@/components/Header/StickyHeader'
 import { Hero } from '@/components/Hero/Hero'
 import { About } from '@/components/About/About'
 import { Skills } from '@/components/Skills/Skills'
@@ -25,6 +26,7 @@ export default function App() {
       <div
         className={`transition-opacity duration-700 ease-out ${loading ? 'pointer-events-none opacity-0' : 'opacity-100'}`}
       >
+        <StickyHeader />
         <main>
           <Hero />
           <About />
