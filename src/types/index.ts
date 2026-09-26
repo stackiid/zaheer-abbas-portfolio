@@ -11,6 +11,8 @@ export interface PersonalInfo {
   firstName: string
   title: string
   tagline: string
+  summary: string
+  yearsExperience: string
   location: string
   email: string
   phone: string

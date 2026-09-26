@@ -4,6 +4,7 @@ import { personal } from '@/data/personal'
 import { Header } from '@/components/Header/Header'
 import { SocialLinks } from '@/components/ui/SocialLinks'
 import { BracketButton } from '@/components/ui/BracketButton'
+import { Divider } from '@/components/ui/Divider'
 import { gsap } from '@/lib/gsap'
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 
@@ -60,12 +61,28 @@ export function Hero() {
             {personal.title} <span className="opacity-50">/</span> {personal.tagline}
           </p>
 
+          <p className="hidden max-w-md font-sans text-sm leading-relaxed text-muted lg:block">{personal.summary}</p>
+
+          <div className="hidden lg:block">
+            <Divider />
+          </div>
+
+          <div className="hidden items-baseline gap-3 lg:flex">
+            <span className="font-display text-4xl font-bold leading-none text-ink">{personal.yearsExperience}</span>
+            <span className="font-sans text-sm leading-tight text-muted">
+              Years
+              <br />
+              Experience
+            </span>
+          </div>
+
           <div data-hero-social className="hidden pt-4 lg:block">
             <SocialLinks links={personal.socials} variant="light" />
           </div>
 
-          <div className="hidden pt-6 lg:block">
+          <div className="hidden items-center gap-8 pt-6 lg:flex">
             <BracketButton label="Explore" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} />
+            <BracketButton as="a" href={personal.resumeUrl} target="_blank" rel="noreferrer" label="Resume" />
           </div>
         </div>
 

@@ -7,6 +7,9 @@ export const personal: PersonalInfo = {
   firstName: 'Zaheer',
   title: 'Full-Stack Developer',
   tagline: 'React · Next.js · Node.js',
+  summary:
+    'I build scalable web applications with React, Next.js and Node.js — from responsive frontends to production-ready APIs and databases.',
+  yearsExperience: '2+',
   location: 'Islamabad, Pakistan',
   email: 'Zabbasdev@gmail.com',
   phone: '+92 313 9804929',
