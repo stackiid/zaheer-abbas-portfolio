@@ -3,7 +3,6 @@ import { personal } from '@/data/personal'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Divider } from '@/components/ui/Divider'
-import { SocialLinks } from '@/components/ui/SocialLinks'
 import { ContactForm } from '@/components/Contact/ContactForm'
 
 export function Contact() {
@@ -17,7 +16,6 @@ export function Contact() {
             <span>
               {personal.email} · {personal.phone}
             </span>
-            <SocialLinks links={personal.socials} variant="light" size="sm" />
           </div>
 
           <Divider />

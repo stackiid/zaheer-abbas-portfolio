@@ -80,7 +80,7 @@ export function ContactForm() {
             'aria-invalid': Boolean(error),
             'aria-describedby': error ? `contact-${field.name}-error` : undefined,
             className:
-              'w-full border-b border-ink/40 bg-transparent pb-3 text-sm text-ink placeholder:text-muted/70 placeholder:tracking-[0.08em] focus:border-ink transition-colors',
+              'w-full border-b border-ink/40 bg-transparent pb-3 text-sm text-ink placeholder:text-muted/70 placeholder:tracking-[0.08em] focus:border-ink focus:outline-none focus-visible:outline-none transition-colors',
           }
 
           return (
