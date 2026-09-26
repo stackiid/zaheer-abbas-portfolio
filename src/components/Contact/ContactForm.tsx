@@ -1,17 +1,31 @@
 import { useState } from 'react'
 import type { ChangeEvent, FormEvent } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { contact } from '@/data/contact'
+import { personal } from '@/data/personal'
 import { validateContactForm } from '@/lib/validation'
-import type { FormErrors, FormValues } from '@/lib/validation'
+import type { ContactMode, FormErrors, FormValues } from '@/lib/validation'
+import { buildWhatsAppUrl } from '@/lib/whatsapp'
 import { BracketButton } from '@/components/ui/BracketButton'
 import { Toast } from '@/components/Contact/Toast'
 import type { ToastState, ToastVariant } from '@/components/Contact/Toast'
 
 const initialValues: FormValues = { name: '', email: '', phone: '', message: '' }
 
+// Which fields are visible in each mode, in display order. Both modes share
+// the same underlying `values` state (see FormValues), so switching modes
+// never loses what's already been typed in the other mode's fields.
+const MODE_FIELDS: Record<ContactMode, Array<keyof FormValues>> = {
+  email: ['name', 'email', 'message'],
+  whatsapp: ['name', 'phone', 'message'],
+}
+
 let toastId = 0
 
 export function ContactForm() {
+  const [mode, setMode] = useState<ContactMode>('email')
   const [values, setValues] = useState<FormValues>(initialValues)
   const [errors, setErrors] = useState<FormErrors>({})
   const [status, setStatus] = useState<'idle' | 'submitting'>('idle')
@@ -30,11 +44,27 @@ export function ContactForm() {
     setValues((current) => ({ ...current, [field]: event.target.value }))
   }
 
+  const switchMode = (nextMode: ContactMode) => {
+    if (nextMode === mode) return
+    setMode(nextMode)
+    setErrors({})
+  }
+
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const validationErrors = validateContactForm(values)
+    const validationErrors = validateContactForm(values, mode)
     setErrors(validationErrors)
     if (Object.keys(validationErrors).length > 0) return
+
+    if (mode === 'whatsapp') {
+      const url = buildWhatsAppUrl(personal.phone, {
+        name: values.name,
+        phone: values.phone,
+        message: values.message,
+      })
+      window.open(url, '_blank', 'noopener,noreferrer')
+      return
+    }
 
     setStatus('submitting')
 
@@ -51,7 +81,7 @@ export function ContactForm() {
       const response = await fetch(contact.formspreeEndpoint, {
         method: 'POST',
         headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ name: values.name, email: values.email, message: values.message }),
       })
 
       if (!response.ok) throw new Error('Request failed')
@@ -65,10 +95,41 @@ export function ContactForm() {
     }
   }
 
+  const visibleFields = contact.fields.filter((field) => MODE_FIELDS[mode].includes(field.name))
+
   return (
     <div className="w-full max-w-xl">
+      <div
+        role="group"
+        aria-label="Choose how to get in touch"
+        className="mb-8 inline-flex w-full items-center gap-1 rounded-full border border-ink/15 bg-white p-1"
+      >
+        <button
+          type="button"
+          aria-pressed={mode === 'email'}
+          onClick={() => switchMode('email')}
+          className={`flex flex-1 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
+            mode === 'email' ? 'bg-ink text-paper' : 'text-muted hover:text-ink'
+          }`}
+        >
+          <FontAwesomeIcon icon={faEnvelope} className="text-xs" aria-hidden="true" />
+          Email
+        </button>
+        <button
+          type="button"
+          aria-pressed={mode === 'whatsapp'}
+          onClick={() => switchMode('whatsapp')}
+          className={`flex flex-1 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
+            mode === 'whatsapp' ? 'bg-ink text-paper' : 'text-muted hover:text-ink'
+          }`}
+        >
+          <FontAwesomeIcon icon={faWhatsapp} className="text-xs" aria-hidden="true" />
+          WhatsApp
+        </button>
+      </div>
+
       <form noValidate onSubmit={onSubmit} className="flex flex-col gap-7">
-        {contact.fields.map((field) => {
+        {visibleFields.map((field) => {
           const value = values[field.name]
           const error = errors[field.name]
           const shared = {
@@ -77,6 +138,8 @@ export function ContactForm() {
             value,
             onChange: onChange(field.name),
             placeholder: field.placeholder,
+            'aria-label': field.label,
+            'aria-required': field.required,
             'aria-invalid': Boolean(error),
             'aria-describedby': error ? `contact-${field.name}-error` : undefined,
             className:
@@ -102,7 +165,9 @@ export function ContactForm() {
         <div className="pt-2">
           <BracketButton
             type="submit"
-            label={status === 'submitting' ? 'Sending…' : 'Submit'}
+            label={
+              mode === 'whatsapp' ? 'Continue on WhatsApp' : status === 'submitting' ? 'Sending…' : 'Send Message'
+            }
             disabled={status === 'submitting'}
             className="disabled:opacity-50"
           />

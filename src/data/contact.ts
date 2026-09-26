@@ -8,9 +8,9 @@ export const contact: ContactConfig = {
   formspreeEndpoint: '',
   autoHideMs: 5000,
   fields: [
-    { name: 'name', label: 'Name', type: 'text', placeholder: 'Enter your name*', required: true },
-    { name: 'email', label: 'Email', type: 'email', placeholder: 'Enter your email*', required: true },
-    { name: 'phone', label: 'Phone number', type: 'tel', placeholder: 'Phone number', required: false },
+    { name: 'name', label: 'Full Name', type: 'text', placeholder: 'Enter your full name*', required: true },
+    { name: 'email', label: 'Email', type: 'email', placeholder: 'you@example.com*', required: true },
+    { name: 'phone', label: 'WhatsApp Number', type: 'tel', placeholder: '+92 300 1234567*', required: true },
     { name: 'message', label: 'Message', type: 'textarea', placeholder: 'Your message*', required: true },
   ],
 }
