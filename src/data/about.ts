@@ -1,0 +1,31 @@
+import type { AboutContent } from '@/types'
+
+// About Me section copy. Pillars mirror the reference design's three-column
+// layout, rewritten around Zaheer's actual full-stack workflow.
+export const about: AboutContent = {
+  eyebrow: 'About',
+  heading: 'About Me',
+  intro:
+    "I'm a full-stack developer with 2+ years of experience building scalable web applications with React, Next.js, Node.js and modern databases — delivering complete solutions for clients across logistics, corporate, automotive and service industries.",
+  exploreTargetId: 'skills',
+  pillars: [
+    {
+      id: 'frontend',
+      title: 'Frontend',
+      description:
+        'Responsive, accessible interfaces built with React and Next.js, styled with Tailwind CSS and shipped without layout surprises.',
+    },
+    {
+      id: 'backend',
+      title: 'Backend & APIs',
+      description:
+        'REST APIs and database architecture with Node.js, Express and SQL/NoSQL data stores, designed for performance and scale.',
+    },
+    {
+      id: 'deployment',
+      title: 'Deployment & Maintenance',
+      description:
+        'Production deployments on modern hosting platforms, with ongoing maintenance and iteration once real users are in the app.',
+    },
+  ],
+}
