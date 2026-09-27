@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import type { KeyboardEvent, TouchEvent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
@@ -53,7 +53,7 @@ export function TestimonialCarousel() {
   const goPrev = () => goTo(index - 1)
   const goNext = () => goTo(index + 1)
 
-  const trackStyle = useMemo(() => ({ transform: `translateX(-${index * 100}%)` }), [index])
+  const trackStyle = { transform: `translateX(-${index * 100}%)` }
 
   const onKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'ArrowLeft') goPrev()
