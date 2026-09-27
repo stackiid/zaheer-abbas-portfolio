@@ -87,6 +87,33 @@ body {
   outline: none;
 }
 
+/* Dual-mode contact form switch: driven directly by aria-pressed so the
+   active/inactive visual state can never drift from the underlying mode
+   state. Written as plain CSS (not Tailwind utility classes) because the
+   shared `button { background: none; border: none; }` reset below is
+   plain unlayered CSS, and Tailwind v4 puts utility classes in
+   @layer utilities — unlayered CSS always wins over layered CSS
+   regardless of specificity, so bg-ink/bg-white/text-paper/text-ink
+   utility classes on a <button> were being silently discarded. Styling
+   only these two buttons directly (rather than moving the shared reset
+   into a layer) keeps the fix scoped to the contact form only. */
+.contact-mode-btn {
+  background-color: var(--color-white);
+  color: var(--color-ink);
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.contact-mode-btn[aria-pressed='false']:hover {
+  background-color: var(--color-paper);
+}
+
+.contact-mode-btn[aria-pressed='true'] {
+  background-color: var(--color-ink);
+  color: var(--color-white);
+}
+
 /* ---------------------------------------------------------------------- */
 /* Custom scrollbar                                                       */
 /* ---------------------------------------------------------------------- */

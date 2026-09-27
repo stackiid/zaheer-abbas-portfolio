@@ -108,9 +108,7 @@ export function ContactForm() {
           type="button"
           aria-pressed={mode === 'email'}
           onClick={() => switchMode('email')}
-          className={`flex flex-1 items-center justify-center gap-2 px-4 py-3 text-sm font-semibold transition-colors ${
-            mode === 'email' ? 'bg-ink text-paper' : 'bg-white text-ink hover:bg-paper'
-          }`}
+          className="contact-mode-btn flex flex-1 items-center justify-center gap-2 px-4 py-3 text-sm font-semibold"
         >
           <FontAwesomeIcon icon={faEnvelope} className="text-base" aria-hidden="true" />
           Email
@@ -119,9 +117,7 @@ export function ContactForm() {
           type="button"
           aria-pressed={mode === 'whatsapp'}
           onClick={() => switchMode('whatsapp')}
-          className={`flex flex-1 items-center justify-center gap-2 px-4 py-3 text-sm font-semibold transition-colors ${
-            mode === 'whatsapp' ? 'bg-ink text-paper' : 'bg-white text-ink hover:bg-paper'
-          }`}
+          className="contact-mode-btn flex flex-1 items-center justify-center gap-2 px-4 py-3 text-sm font-semibold"
         >
           <FontAwesomeIcon icon={faWhatsapp} className="text-base" aria-hidden="true" />
           WhatsApp
