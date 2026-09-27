@@ -114,6 +114,16 @@ body {
   color: var(--color-white);
 }
 
+/* BracketButton's two color variants — see the comment in BracketButton.tsx
+   for why this can't be a text-ink/text-cloud Tailwind class on a <button>. */
+.bracket-btn-light {
+  color: var(--color-ink);
+}
+
+.bracket-btn-dark {
+  color: var(--color-cloud);
+}
+
 /* ---------------------------------------------------------------------- */
 /* Custom scrollbar                                                       */
 /* ---------------------------------------------------------------------- */

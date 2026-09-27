@@ -8,10 +8,16 @@ type AsAnchor = CommonProps & { as: 'a' } & AnchorHTMLAttributes<HTMLAnchorEleme
 // design — a minimal, no-fill action used inline within a section. Renders
 // as a <button> by default, or as an <a> (e.g. the hero's "Resume" link)
 // when `as="a"` is passed, so every bracket CTA in the app shares one look.
+// Color is set via plain CSS classes (see .bracket-btn-light/-dark in
+// index.css) rather than a text-ink/text-cloud Tailwind class: a raw
+// <button> element silently loses a Tailwind text-color utility to this
+// project's shared `button { color: inherit }` reset (unlayered CSS always
+// wins over Tailwind's @layer utilities), which is exactly why the About
+// intro band's "Read More" button was rendering dark-on-dark.
 export function BracketButton(props: AsButton | AsAnchor) {
   const { label, onDark = false, className = '', as, ...rest } = props
-  const color = onDark ? 'text-cloud' : 'text-ink'
-  const classes = `group flex items-center gap-3 font-display text-xs font-bold tracking-[0.3em] ${color} ${className}`
+  const toneClass = onDark ? 'bracket-btn-dark' : 'bracket-btn-light'
+  const classes = `group flex items-center gap-3 font-display text-xs font-bold tracking-[0.3em] ${toneClass} ${className}`
 
   const brackets = (
     <>

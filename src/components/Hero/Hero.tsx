@@ -45,9 +45,9 @@ export function Hero() {
 
       <Header />
 
-      <div className="relative mx-auto flex min-h-screen max-w-[1680px] flex-col lg:min-h-[860px] lg:flex-row">
+      <div className="relative mx-auto flex min-h-screen max-w-[1680px] flex-col lg:h-screen lg:flex-row">
         {/* Text column */}
-        <div className="relative z-10 flex flex-1 flex-col justify-center gap-6 px-6 pb-0 pt-28 sm:px-10 lg:w-1/2 lg:flex-none lg:px-16 lg:py-32 xl:px-20">
+        <div className="relative z-10 flex flex-1 flex-col justify-center gap-5 px-6 pb-0 pt-28 sm:px-10 lg:w-1/2 lg:flex-none lg:px-16 lg:py-20 xl:px-20">
           <p data-hero-eyebrow className="font-sans text-base text-muted lg:text-muted">
             Hi, I am
           </p>
@@ -76,11 +76,11 @@ export function Hero() {
             </span>
           </div>
 
-          <div data-hero-social className="hidden pt-4 lg:block">
+          <div data-hero-social className="hidden pt-3 lg:block">
             <SocialLinks links={personal.socials} variant="light" />
           </div>
 
-          <div className="hidden items-center gap-8 pt-6 lg:flex">
+          <div className="hidden items-center gap-8 pt-5 lg:flex">
             <BracketButton label="Explore" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} />
             <BracketButton as="a" href={personal.resumeUrl} target="_blank" rel="noreferrer" label="Resume" />
           </div>

@@ -10,7 +10,7 @@ import { BracketButton } from '@/components/ui/BracketButton'
 // section titles.
 export function AboutIntroBanner() {
   return (
-    <div className="relative overflow-hidden bg-ink py-10 sm:py-12 lg:py-14">
+    <div className="relative overflow-hidden bg-[#1d1d1d] py-10 sm:py-12 lg:py-14">
       <svg
         aria-hidden="true"
         viewBox="0 0 34 34"

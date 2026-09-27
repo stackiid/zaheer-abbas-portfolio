@@ -9,8 +9,8 @@ export const about: AboutContent = {
     "I'm a full-stack developer with 2+ years of experience building scalable web applications with React, Next.js, Node.js and modern databases — delivering complete solutions for clients across logistics, corporate, automotive and service industries.",
   exploreTargetId: 'skills',
   banner: {
-    heading: 'What I Build',
-    body: 'I build modern web experiences that combine clean interfaces, reliable functionality, and practical engineering for real user needs.',
+    heading: 'How I Work',
+    body: 'I take practical requirements and turn them into structured, working products — from interface design and frontend development through backend systems to the ongoing maintenance that keeps everything running.',
     action: 'Read More',
   },
   pillars: [
