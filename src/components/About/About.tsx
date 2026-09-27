@@ -3,15 +3,22 @@ import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Divider } from '@/components/ui/Divider'
 import { BracketButton } from '@/components/ui/BracketButton'
+import { AboutIntroBanner } from '@/components/About/AboutIntroBanner'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 export function About() {
   const revealRef = useScrollReveal<HTMLDivElement>({ itemSelector: '[data-reveal]' })
 
   return (
-    <section id="about" className="bg-paper py-24 sm:py-28">
+    <section id="about" className="bg-paper">
+      <AboutIntroBanner />
+
       <Container>
-        <div ref={revealRef} className="flex flex-col items-center gap-10 text-center">
+        <div
+          id="about-content"
+          ref={revealRef}
+          className="flex flex-col items-center gap-10 py-24 text-center sm:py-28"
+        >
           <div data-reveal>
             <SectionHeading heading={about.heading} />
           </div>

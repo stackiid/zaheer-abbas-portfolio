@@ -26,11 +26,18 @@ export interface AboutPillar {
   description: string
 }
 
+export interface AboutBanner {
+  heading: string
+  body: string
+  action: string
+}
+
 export interface AboutContent {
   eyebrow: string
   heading: string
   intro: string
   exploreTargetId: string
+  banner: AboutBanner
   pillars: AboutPillar[]
 }
 
