@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { navLinks } from '@/components/Header/navLinks'
 import { Logo } from '@/components/Header/Logo'
 import { PillButton } from '@/components/ui/PillButton'
@@ -17,7 +19,7 @@ export function HeaderBarContent({ variant, menuOpen, onOpenMenu, focusable = tr
   const tabIndex = focusable ? undefined : -1
 
   return (
-    <div className="flex items-center justify-between px-6 py-6 sm:px-10 lg:px-12">
+    <div className="flex items-center justify-between px-6 py-6 text-cloud sm:px-10 lg:px-12">
       <span className={variant === 'hero' ? 'text-cloud lg:text-ink' : 'text-cloud'}>
         <Logo tabIndex={tabIndex} />
       </span>
@@ -53,11 +55,9 @@ export function HeaderBarContent({ variant, menuOpen, onOpenMenu, focusable = tr
         aria-label="Open navigation menu"
         aria-expanded={menuOpen}
         tabIndex={tabIndex}
-        className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+        className="flex h-10 w-10 items-center justify-center lg:hidden"
       >
-        <span className="h-0.5 w-6 bg-cloud" />
-        <span className="h-0.5 w-6 bg-cloud" />
-        <span className="h-0.5 w-4 self-end bg-cloud" />
+        <FontAwesomeIcon icon={faBars} className="text-xl" aria-hidden="true" />
       </button>
     </div>
   )

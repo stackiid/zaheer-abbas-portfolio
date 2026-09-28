@@ -1,7 +1,10 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { gsap } from '@/lib/gsap'
 import { useLockBodyScroll } from '@/hooks/useLockBodyScroll'
 import { personal } from '@/data/personal'
+import { Logo } from '@/components/Header/Logo'
 import { SocialLinks } from '@/components/ui/SocialLinks'
 import { PillButton } from '@/components/ui/PillButton'
 import type { NavLink } from '@/components/Header/navLinks'
@@ -13,9 +16,15 @@ interface MobileNavProps {
   resumeUrl: string
 }
 
-// Slides in from the left over a dimmed backdrop; the page behind never
-// moves. Escape and backdrop clicks close it, and focus returns to the
-// hamburger trigger on close.
+// Every section of the single-page site, top to bottom: Home and Contact
+// frame the header's own (shorter) link list.
+const HOME_LINK: NavLink = { id: 'top', label: 'Home', href: '#top' }
+const CONTACT_LINK: NavLink = { id: 'contact', label: 'Contact', href: '#contact' }
+
+// Left-hand side drawer over a dimmed, blurred backdrop; the page behind
+// never moves. Layering is backdrop (z-40) < drawer (z-50), and the blur
+// lives only on the backdrop, so the drawer itself is never blurred.
+// Escape, the close button, the backdrop and any link all close it.
 export function MobileNav({ open, onClose, links, resumeUrl }: MobileNavProps) {
   const panelRef = useRef<HTMLDivElement>(null)
   const backdropRef = useRef<HTMLDivElement>(null)
@@ -23,22 +32,42 @@ export function MobileNav({ open, onClose, links, resumeUrl }: MobileNavProps) {
 
   useLockBodyScroll(open)
 
+  // GSAP owns the panel's transform from the first paint. (An inline CSS
+  // `translateX(-100%)` gets parsed by GSAP into a fixed pixel `x` offset
+  // that animating `xPercent` never clears — which is what left the drawer
+  // stuck off-screen while the backdrop faded in.)
+  useLayoutEffect(() => {
+    if (panelRef.current) gsap.set(panelRef.current, { xPercent: -100, visibility: 'hidden' })
+  }, [])
+
   useEffect(() => {
     const panel = panelRef.current
     const backdrop = backdropRef.current
     if (!panel || !backdrop) return
 
     if (open) {
-      gsap.set(panel, { xPercent: -100 })
-      gsap.set(backdrop, { opacity: 0, pointerEvents: 'auto' })
+      gsap.set(panel, { visibility: 'visible' })
+      gsap.set(backdrop, { pointerEvents: 'auto' })
       gsap.to(backdrop, { opacity: 1, duration: 0.3, ease: 'power2.out' })
       gsap.to(panel, { xPercent: 0, duration: 0.45, ease: 'power3.out' })
       firstLinkRef.current?.focus()
     } else {
-      gsap.to(panel, { xPercent: -100, duration: 0.35, ease: 'power3.in' })
-      gsap.to(backdrop, { opacity: 0, duration: 0.25, ease: 'power2.in', onComplete: () => {
-        gsap.set(backdrop, { pointerEvents: 'none' })
-      } })
+      gsap.to(panel, {
+        xPercent: -100,
+        duration: 0.35,
+        ease: 'power3.in',
+        onComplete: () => {
+          gsap.set(panel, { visibility: 'hidden' })
+        },
+      })
+      gsap.to(backdrop, {
+        opacity: 0,
+        duration: 0.25,
+        ease: 'power2.in',
+        onComplete: () => {
+          gsap.set(backdrop, { pointerEvents: 'none' })
+        },
+      })
     }
   }, [open])
 
@@ -51,6 +80,8 @@ export function MobileNav({ open, onClose, links, resumeUrl }: MobileNavProps) {
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [open, onClose])
 
+  const drawerLinks = [HOME_LINK, ...links, CONTACT_LINK]
+
   return (
     <>
       <div
@@ -62,59 +93,52 @@ export function MobileNav({ open, onClose, links, resumeUrl }: MobileNavProps) {
       />
       <div
         ref={panelRef}
-        style={{ transform: 'translateX(-100%)' }}
         role="dialog"
         aria-modal="true"
         aria-label="Site navigation"
-        className="on-dark fixed inset-y-0 left-0 z-50 flex w-[82%] max-w-xs flex-col justify-between bg-ink px-7 py-8 lg:hidden"
+        className="on-dark fixed inset-y-0 left-0 z-50 flex w-[80%] max-w-sm flex-col bg-ink text-cloud lg:hidden"
       >
-        <div>
-          <div className="mb-10 flex items-center justify-between">
-            <span className="font-display text-sm font-bold tracking-[0.2em] text-cloud">MENU</span>
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close navigation menu"
-              className="flex h-9 w-9 items-center justify-center text-cloud"
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M1 1l16 16M17 1L1 17" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-              </svg>
-            </button>
-          </div>
+        <div className="flex items-center justify-between px-7 py-6">
+          <Logo />
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close navigation menu"
+            className="flex h-9 w-9 items-center justify-center text-cloud"
+          >
+            <FontAwesomeIcon icon={faXmark} className="text-xl" aria-hidden="true" />
+          </button>
+        </div>
 
-          <nav aria-label="Mobile primary">
-            <ul className="flex flex-col gap-5">
-              {links.map((link, index) => (
-                <li key={link.id}>
-                  <a
-                    ref={index === 0 ? firstLinkRef : undefined}
-                    href={link.href}
-                    onClick={onClose}
-                    className="font-display text-xl font-semibold text-cloud transition-colors hover:text-white"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+        <nav aria-label="Mobile primary" className="flex-1 overflow-y-auto border-t border-cloud/10 px-7 py-8">
+          <ul className="flex flex-col gap-6">
+            {drawerLinks.map((link, index) => (
+              <li key={link.id}>
+                <a
+                  ref={index === 0 ? firstLinkRef : undefined}
+                  href={link.href}
+                  onClick={onClose}
+                  className="font-display text-lg font-medium text-cloud/90 transition-colors hover:text-white"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
+        <div className="flex flex-col gap-6 border-t border-cloud/10 px-7 py-8">
           <PillButton
             as="a"
             href={resumeUrl}
             target="_blank"
             rel="noreferrer"
             variant="solid"
-            className="mt-8 w-full bg-cloud text-ink"
+            className="w-full bg-cloud text-ink"
           >
             Resume
           </PillButton>
-        </div>
-
-        <div className="flex flex-col gap-4">
           <SocialLinks links={personal.socials} variant="dark" size="sm" />
-          <p className="text-xs text-muted-dark">{personal.email}</p>
         </div>
       </div>
     </>

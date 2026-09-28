@@ -95,13 +95,8 @@ export function Hero() {
             className="relative z-0 h-[62vh] w-auto max-w-none object-contain object-bottom sm:h-[68vh] lg:h-[86%] lg:max-h-[760px] xl:max-h-[820px]"
           />
 
-          {/* Mobile-only identity + social bar over the photo */}
-          <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 bg-gradient-to-t from-ink via-ink/85 to-transparent px-6 py-6 sm:px-10 lg:hidden">
-            <div>
-              <p className="font-sans text-sm text-muted-dark">Hi, I am</p>
-              <p className="font-display text-3xl font-bold text-cloud sm:text-4xl">{personal.name}</p>
-              <p className="mt-1 font-display text-sm font-medium text-muted-dark">{personal.title}</p>
-            </div>
+          {/* Mobile-only social bar over the photo */}
+          <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-center bg-gradient-to-t from-ink via-ink/85 to-transparent px-6 py-6 sm:px-10 lg:hidden">
             <SocialLinks links={personal.socials} variant="dark" size="sm" />
           </div>
         </div>
