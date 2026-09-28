@@ -1,12 +1,11 @@
 import { useEffect, useLayoutEffect, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faDownload, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { gsap } from '@/lib/gsap'
 import { useLockBodyScroll } from '@/hooks/useLockBodyScroll'
 import { personal } from '@/data/personal'
 import { Logo } from '@/components/Header/Logo'
 import { SocialLinks } from '@/components/ui/SocialLinks'
-import { PillButton } from '@/components/ui/PillButton'
 import type { NavLink } from '@/components/Header/navLinks'
 
 interface MobileNavProps {
@@ -128,17 +127,18 @@ export function MobileNav({ open, onClose, links, resumeUrl }: MobileNavProps) {
         </nav>
 
         <div className="flex flex-col gap-6 border-t border-cloud/10 px-7 py-8">
-          <PillButton
-            as="a"
+          <a
             href={resumeUrl}
             target="_blank"
             rel="noreferrer"
-            variant="solid"
-            className="w-full bg-cloud text-ink"
+            className="flex w-full items-center justify-center gap-3 rounded-full border border-cloud bg-cloud px-6 py-4 font-display text-sm font-bold uppercase tracking-[0.2em] text-ink shadow-[0_6px_0_0_rgba(246,246,245,0.12)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-transparent hover:text-cloud active:translate-y-0 active:scale-[0.98]"
           >
-            Resume
-          </PillButton>
-          <SocialLinks links={personal.socials} variant="dark" size="sm" />
+            <FontAwesomeIcon icon={faDownload} className="text-base" aria-hidden="true" />
+            Download Resume
+          </a>
+          <div className="flex justify-center">
+            <SocialLinks links={personal.socials} variant="dark" size="sm" />
+          </div>
         </div>
       </div>
     </>

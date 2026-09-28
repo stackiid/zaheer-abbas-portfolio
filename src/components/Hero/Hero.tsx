@@ -96,7 +96,7 @@ export function Hero() {
           />
 
           {/* Mobile-only social bar over the photo */}
-          <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-center bg-gradient-to-t from-ink via-ink/85 to-transparent px-6 py-6 sm:px-10 lg:hidden">
+          <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-end bg-gradient-to-t from-ink via-ink/85 to-transparent px-6 py-6 sm:px-10 lg:hidden">
             <SocialLinks links={personal.socials} variant="dark" size="sm" />
           </div>
         </div>
