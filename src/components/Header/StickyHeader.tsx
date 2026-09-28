@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { personal } from '@/data/personal'
 import { navLinks } from '@/components/Header/navLinks'
 import { HeaderBarContent } from '@/components/Header/HeaderBarContent'
@@ -48,6 +48,14 @@ export function StickyHeader() {
     }
   }, [])
 
+  // GSAP owns this element's transform from the very first paint. (An inline
+  // CSS `translateY(-100%)` would be parsed by GSAP into a fixed pixel `y`
+  // offset that animating `yPercent` never clears — leaving the bar stuck
+  // off-screen even when it should be visible.)
+  useLayoutEffect(() => {
+    if (barRef.current) gsap.set(barRef.current, { yPercent: -100 })
+  }, [])
+
   useEffect(() => {
     const bar = barRef.current
     if (!bar) return
@@ -69,7 +77,6 @@ export function StickyHeader() {
       <div
         ref={barRef}
         aria-hidden={!visible}
-        style={{ transform: 'translateY(-100%)' }}
         className={`fixed inset-x-0 top-0 z-40 bg-ink ${visible ? '' : 'pointer-events-none'}`}
       >
         <HeaderBarContent
