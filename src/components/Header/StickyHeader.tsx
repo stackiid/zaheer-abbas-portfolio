@@ -1,26 +1,51 @@
 import { useEffect, useRef, useState } from 'react'
+import { personal } from '@/data/personal'
 import { navLinks } from '@/components/Header/navLinks'
-import { PillButton } from '@/components/ui/PillButton'
+import { HeaderBarContent } from '@/components/Header/HeaderBarContent'
+import { MobileNav } from '@/components/Header/MobileNav'
 import { gsap } from '@/lib/gsap'
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 
-const SCROLL_THRESHOLD = 24
-
-// Compact black nav bar for scroll: stays off-screen above the viewport
-// until the user scrolls past the hero's top, then animates down and pins
-// itself in place. Scrolling back to the top reverses it, which hands
-// visibility back to the primary/fancy header in the hero. Desktop-only,
-// mirroring the primary header's own lg-and-up nav.
+// Persistent black nav bar. Hidden and off-screen above the viewport while
+// the user is in the first half of the Hero (where the Fancy Header, which
+// never becomes fixed, is the natural navigation); once the user has
+// scrolled past ~50% of the Hero's own height, it slides down from the top
+// and stays fixed for the rest of the page. Scrolling back above that
+// threshold slides it back out, handing navigation back to the Fancy
+// Header. The threshold is derived from the Hero section's actual measured
+// height (see Hero.tsx's `id="hero"`), not a hardcoded pixel value, so it
+// stays correct across viewport sizes and orientation changes.
 export function StickyHeader() {
   const barRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const prefersReducedMotion = usePrefersReducedMotion()
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > SCROLL_THRESHOLD)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    let frame = 0
+
+    const checkThreshold = () => {
+      const hero = document.getElementById('hero')
+      if (!hero) return
+      const rect = hero.getBoundingClientRect()
+      const scrolledPastHeroTop = -rect.top
+      setVisible(scrolledPastHeroTop >= rect.height / 2)
+    }
+
+    const onScrollOrResize = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(checkThreshold)
+    }
+
+    checkThreshold()
+    window.addEventListener('scroll', onScrollOrResize, { passive: true })
+    window.addEventListener('resize', onScrollOrResize)
+
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', onScrollOrResize)
+      window.removeEventListener('resize', onScrollOrResize)
+    }
   }, [])
 
   useEffect(() => {
@@ -40,36 +65,22 @@ export function StickyHeader() {
   }, [visible, prefersReducedMotion])
 
   return (
-    <div
-      ref={barRef}
-      aria-hidden={!visible}
-      style={{ transform: 'translateY(-100%)' }}
-      className={`fixed inset-x-0 top-0 z-50 hidden bg-ink lg:block ${visible ? '' : 'pointer-events-none'}`}
-    >
-      <div className="mx-auto flex max-w-[1680px] items-center justify-end gap-8 px-12 py-4">
-        <nav aria-label="Secondary" className="flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              tabIndex={visible ? 0 : -1}
-              className="font-display text-xs font-semibold tracking-[0.15em] text-cloud/85 transition-colors hover:text-cloud"
-            >
-              {link.label.toUpperCase()}
-            </a>
-          ))}
-        </nav>
-
-        <PillButton
-          as="a"
-          href="#contact"
-          variant="solid"
-          tabIndex={visible ? 0 : -1}
-          className="bg-cloud text-ink hover:bg-white hover:text-ink"
-        >
-          Contact me
-        </PillButton>
+    <>
+      <div
+        ref={barRef}
+        aria-hidden={!visible}
+        style={{ transform: 'translateY(-100%)' }}
+        className={`fixed inset-x-0 top-0 z-40 bg-ink ${visible ? '' : 'pointer-events-none'}`}
+      >
+        <HeaderBarContent
+          variant="scroll"
+          menuOpen={menuOpen}
+          onOpenMenu={() => setMenuOpen(true)}
+          focusable={visible}
+        />
       </div>
-    </div>
+
+      <MobileNav open={menuOpen} onClose={() => setMenuOpen(false)} links={navLinks} resumeUrl={personal.resumeUrl} />
+    </>
   )
 }

@@ -32,7 +32,7 @@ export function Hero() {
   }, [prefersReducedMotion])
 
   return (
-    <section ref={rootRef} className="relative overflow-hidden bg-ink lg:bg-paper">
+    <section id="hero" ref={rootRef} className="relative overflow-hidden bg-ink lg:bg-paper">
       {/* Desktop-only diagonal split panel */}
       <div
         className="pointer-events-none absolute inset-0 hidden lg:block"
