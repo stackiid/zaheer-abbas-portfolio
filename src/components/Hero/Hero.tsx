@@ -82,7 +82,14 @@ export function Hero() {
 
           <div className="hidden items-center gap-8 pt-5 lg:flex">
             <BracketButton label="Explore" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} />
-            <BracketButton as="a" href={personal.resumeUrl} target="_blank" rel="noreferrer" label="Resume" />
+            <BracketButton
+              as="a"
+              href={personal.resumeUrl}
+              download="Zaheer-Abbas-Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              label="Resume"
+            />
           </div>
         </div>
 
