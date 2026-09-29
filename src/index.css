@@ -92,7 +92,7 @@ body {
    state. Written as plain CSS (not Tailwind utility classes) because the
    shared `button { background: none; border: none; }` reset below is
    plain unlayered CSS, and Tailwind v4 puts utility classes in
-   @layer utilities — unlayered CSS always wins over layered CSS
+   @layer utilities - unlayered CSS always wins over layered CSS
    regardless of specificity, so bg-ink/bg-white/text-paper/text-ink
    utility classes on a <button> were being silently discarded. Styling
    only these two buttons directly (rather than moving the shared reset
@@ -114,7 +114,7 @@ body {
   color: var(--color-white);
 }
 
-/* BracketButton's two color variants — see the comment in BracketButton.tsx
+/* BracketButton's two color variants - see the comment in BracketButton.tsx
    for why this can't be a text-ink/text-cloud Tailwind class on a <button>. */
 .bracket-btn-light {
   color: var(--color-ink);

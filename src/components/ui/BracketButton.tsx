@@ -5,7 +5,7 @@ type AsButton = CommonProps & { as?: 'button' } & ButtonHTMLAttributes<HTMLButto
 type AsAnchor = CommonProps & { as: 'a' } & AnchorHTMLAttributes<HTMLAnchorElement>
 
 // The "| EXPLORE |" / "| SUBMIT |" bracketed text-button from the reference
-// design — a minimal, no-fill action used inline within a section. Renders
+// design - a minimal, no-fill action used inline within a section. Renders
 // as a <button> by default, or as an <a> (e.g. the hero's "Resume" link)
 // when `as="a"` is passed, so every bracket CTA in the app shares one look.
 // Color is set via plain CSS classes (see .bracket-btn-light/-dark in

@@ -33,7 +33,7 @@ export function MobileNav({ open, onClose, links, resumeUrl }: MobileNavProps) {
 
   // GSAP owns the panel's transform from the first paint. (An inline CSS
   // `translateX(-100%)` gets parsed by GSAP into a fixed pixel `x` offset
-  // that animating `xPercent` never clears — which is what left the drawer
+  // that animating `xPercent` never clears - which is what left the drawer
   // stuck off-screen while the backdrop faded in.)
   useLayoutEffect(() => {
     if (panelRef.current) gsap.set(panelRef.current, { xPercent: -100, visibility: 'hidden' })

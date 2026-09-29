@@ -5,7 +5,7 @@
 React 19 + TypeScript, built with Vite 8. Styling is Tailwind CSS v4
 (CSS-first config via `@theme` in `src/index.css`, no `tailwind.config.js`
 needed). Animation is GSAP + ScrollTrigger. Icons are Font Awesome via
-`@fortawesome/react-fontawesome`. Linting is oxlint — there is no ESLint
+`@fortawesome/react-fontawesome`. Linting is oxlint - there is no ESLint
 config in this project by design.
 
 ## Folder structure
@@ -25,7 +25,7 @@ src/
 │   ├── Testimonials/    Single-item rotating carousel
 │   ├── Contact/         Form, validation wiring, toast notifications
 │   └── Footer/
-├── data/                Content — the only files you edit to update copy
+├── data/                Content - the only files you edit to update copy
 ├── hooks/                useScrollReveal, useMediaQuery, useLockBodyScroll,
 │                          usePrefersReducedMotion
 ├── lib/                  gsap.ts (plugin registration), validation.ts
@@ -37,14 +37,14 @@ src/
 ## Data flows one way: `data/` → components
 
 Every section component imports its content from `src/data/*.ts` and maps
-over it — no section has hardcoded copy, and no section assumes a fixed
+over it - no section has hardcoded copy, and no section assumes a fixed
 number of items. Concretely:
 
 - **Skills** renders however many categories exist in `skills.ts`, each with
   however many skill names, via nested `.map()` calls.
 - **Experience** renders the timeline connector as `absolute inset-y` inside
   a `position: relative` wrapper around the whole list, so its height is
-  always exactly the height of however many `<li>` entries exist — nothing
+  always exactly the height of however many `<li>` entries exist - nothing
   is pinned to a pixel count.
 - **Projects** computes carousel bounds (`maxIndex`) from
   `projects.length` and the current `visibleCount` (1 or 3), so it degrades

@@ -9,7 +9,7 @@ import { gsap } from '@/lib/gsap'
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 
 // The hero's one orchestrated entrance: it plays once, right when the
-// portfolio becomes visible after the loader — everything else in the site
+// portfolio becomes visible after the loader - everything else in the site
 // only animates on scroll or on interaction.
 export function Hero() {
   const rootRef = useRef<HTMLDivElement>(null)

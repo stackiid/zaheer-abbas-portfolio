@@ -4,7 +4,7 @@ export function Logo({ tabIndex }: { tabIndex?: number }) {
   return (
     <a
       href="#top"
-      aria-label="Zaheer Abbas — back to top"
+      aria-label="Zaheer Abbas - back to top"
       tabIndex={tabIndex}
       className="inline-flex items-center text-current"
     >

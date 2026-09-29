@@ -69,10 +69,10 @@ export function ContactForm() {
     setStatus('submitting')
 
     if (!contact.formspreeEndpoint) {
-      // Endpoint intentionally left blank — see data/contact.ts.
+      // Endpoint intentionally left blank - see data/contact.ts.
       window.setTimeout(() => {
         setStatus('idle')
-        pushToast('info', "This form isn't connected yet — add a Formspree endpoint in src/data/contact.ts.")
+        pushToast('info', "This form isn't connected yet - add a Formspree endpoint in src/data/contact.ts.")
       }, 500)
       return
     }
@@ -87,7 +87,7 @@ export function ContactForm() {
       if (!response.ok) throw new Error('Request failed')
 
       setValues(initialValues)
-      pushToast('success', "Message sent — I'll get back to you soon.")
+      pushToast('success', "Message sent - I'll get back to you soon.")
     } catch {
       pushToast('error', 'Something went wrong sending your message. Please try again.')
     } finally {

@@ -13,7 +13,7 @@ Tailwind v4 turns into utilities automatically (`bg-ink`, `text-muted`, etc).
 
 | Token | Value | Use |
 |---|---|---|
-| `--color-ink` | `#0d0d0d` | Primary black — dark panels, headings, text on light |
+| `--color-ink` | `#0d0d0d` | Primary black - dark panels, headings, text on light |
 | `--color-ink-soft` | `#171717` | Hover state for ink surfaces |
 | `--color-paper` | `#ececeb` | Default light section background |
 | `--color-paper-dim` | `#dcdcda` | Scrollbar track, subtle contrast |
@@ -22,7 +22,7 @@ Tailwind v4 turns into utilities automatically (`bg-ink`, `text-muted`, etc).
 | `--color-muted` | `#6b6b68` | Body copy on light backgrounds |
 | `--color-muted-dark` | `#9a9a97` | Body copy on dark backgrounds |
 
-There is no accent color and no purple/violet anywhere in the palette —
+There is no accent color and no purple/violet anywhere in the palette -
 both are deliberate, matching the supplied design and its explicit
 restrictions. There is exactly one visual theme; no dark/light mode toggle
 exists anywhere in the app.
@@ -31,9 +31,9 @@ exists anywhere in the app.
 
 Two Google Fonts, loaded in `index.html`:
 
-- **Space Grotesk** (`--font-display`) — headings, nav, labels, buttons.
+- **Space Grotesk** (`--font-display`) - headings, nav, labels, buttons.
   Bold, geometric, developer-oriented.
-- **Inter** (`--font-sans`) — body copy, form fields.
+- **Inter** (`--font-sans`) - body copy, form fields.
 
 Type scale follows Tailwind's default steps (`text-sm` → `text-7xl`); hero
 name and section headings are the only places using the largest sizes, so
@@ -41,22 +41,22 @@ there's a clear hierarchy between display and body text.
 
 ## Primitives (`src/components/ui/`)
 
-- **SectionHeading** — the boxed, tracked-out `ABOUT ME` / `SKILLS` /
+- **SectionHeading** - the boxed, tracked-out `ABOUT ME` / `SKILLS` /
   `CONTACT` heading used on every major section.
-- **Divider** — the small stitched zig-zag rule between the boxed heading
+- **Divider** - the small stitched zig-zag rule between the boxed heading
   and section body.
-- **BracketButton** — the `| EXPLORE |` / `| SUBMIT |` text button with
+- **BracketButton** - the `| EXPLORE |` / `| SUBMIT |` text button with
   vertical hairline brackets.
-- **PillButton** — the rounded black/white CTA used for "Contact me" (nav)
+- **PillButton** - the rounded black/white CTA used for "Contact me" (nav)
   and "Resume" (mobile nav).
-- **SocialLinks** — square icon buttons (Font Awesome), with a `dark`
+- **SocialLinks** - square icon buttons (Font Awesome), with a `dark`
   variant for black backgrounds and a `light` variant for paper backgrounds.
 
 ## Layout
 
 - **Hero** is the one intentionally asymmetric layout: a diagonal
   `clip-path` split on `lg+` screens (paper left / ink right), collapsing to
-  a full-bleed dark photo with an overlay identity bar below `lg` — a
+  a full-bleed dark photo with an overlay identity bar below `lg` - a
   deliberately different mobile composition, not a shrunk desktop layout.
 - Every other section is a centered, single-column composition with a
   `max-w-6xl` container, which is what the reference design uses throughout
@@ -75,7 +75,7 @@ there's a clear hierarchy between display and body text.
   you scroll through the list) rather than fading in with the rest of the
   content, since it's meant to read as a progress indicator.
 - All animation respects `prefers-reduced-motion`; see
-  `src/hooks/usePrefersReducedMotion.ts` — when it's on, elements are set to
+  `src/hooks/usePrefersReducedMotion.ts` - when it's on, elements are set to
   their final state instantly instead of tweening.
 
 ## Deliberately not used
@@ -85,6 +85,6 @@ there's a clear hierarchy between display and body text.
 - **No project or testimonial grid.** Both are single-item carousels per the
   brief, not cards-in-a-grid.
 - **No modal/dialog.** Project cards already show the full description,
-  tech stack and links inline — a modal would duplicate that content rather
+  tech stack and links inline - a modal would duplicate that content rather
   than add anything, so one was deliberately left out rather than added for
   decoration.

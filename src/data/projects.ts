@@ -5,7 +5,7 @@ import tailorAppImage from '@/assets/projects/tailorapp.webp'
 import type { Project } from '@/types'
 
 // Each project's GitHub/live links are independently toggled with the
-// `*Enabled` flags — the ProjectCard component hides whichever is off
+// `*Enabled` flags - the ProjectCard component hides whichever is off
 // without any changes to the component itself.
 export const projects: Project[] = [
   {

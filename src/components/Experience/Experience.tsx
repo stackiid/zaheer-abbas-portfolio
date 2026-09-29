@@ -13,7 +13,7 @@ const typeLabel: Record<string, string> = {
 }
 
 // The connecting line's height is 100% of its relative-positioned wrapper,
-// so it always spans exactly as many entries as `experience` contains —
+// so it always spans exactly as many entries as `experience` contains -
 // nothing here is pinned to a fixed pixel count.
 export function Experience() {
   const revealRef = useScrollReveal<HTMLDivElement>({ itemSelector: '[data-reveal]' })
@@ -66,7 +66,7 @@ export function Experience() {
                   <h3 className="mt-1 font-display text-lg font-bold text-ink sm:text-xl">{item.role}</h3>
                   <p className="mt-1 text-sm font-medium text-muted">
                     {item.organization}
-                    {item.location ? ` · ${item.location}` : ''} — {item.period}
+                    {item.location ? ` · ${item.location}` : ''} - {item.period}
                   </p>
                   {item.points.length > 0 ? (
                     <ul className="mt-4 flex flex-col gap-2">

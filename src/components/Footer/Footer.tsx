@@ -6,7 +6,7 @@ import { Container } from '@/components/ui/Container'
 import { SocialLinks } from '@/components/ui/SocialLinks'
 
 // Dark, on-brand footer: brand + social, a two-column sitemap of every real
-// section on the page, and a "get in touch" block — then a bottom bar with
+// section on the page, and a "get in touch" block - then a bottom bar with
 // copyright and a back-to-top link.
 export function Footer() {
   const year = new Date().getFullYear()

@@ -4,7 +4,7 @@ export interface NavLink {
   href: string
 }
 
-// Central nav map — drives both the desktop bar and the mobile slide panel.
+// Central nav map - drives both the desktop bar and the mobile slide panel.
 export const navLinks: NavLink[] = [
   { id: 'about', label: 'About me', href: '#about' },
   { id: 'skills', label: 'Skills', href: '#skills' },

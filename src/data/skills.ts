@@ -1,7 +1,7 @@
 import type { SkillCategory } from '@/types'
 
 // Skills are grouped by category, not rated by icon or percentage.
-// Add or remove a category/skill here — the Skills section renders
+// Add or remove a category/skill here - the Skills section renders
 // however many categories exist without any layout changes.
 export const skills: SkillCategory[] = [
   {

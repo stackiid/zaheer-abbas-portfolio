@@ -4,7 +4,7 @@ export interface SitemapLink {
   href: string
 }
 
-// Full list of the site's real sections, in page order — used by the
+// Full list of the site's real sections, in page order - used by the
 // footer's "Sitemap" column. Deliberately separate from navLinks.ts, which
 // drives the header and only surfaces a shorter subset.
 export const footerSitemap: SitemapLink[] = [

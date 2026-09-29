@@ -20,7 +20,7 @@ const variantStyles: Record<ToastVariant, string> = {
   info: 'border-ink/20 bg-white text-ink',
 }
 
-// Custom themed toast — never a browser alert(). Auto-hides after
+// Custom themed toast - never a browser alert(). Auto-hides after
 // `durationMs` and can be dismissed early via the close control.
 export function Toast({ id, variant, message, durationMs, onDismiss }: ToastProps) {
   const toastRef = useRef<HTMLDivElement>(null)

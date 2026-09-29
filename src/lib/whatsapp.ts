@@ -15,7 +15,7 @@ function toWaDigits(value: string): string {
 // visitor's own submitted values (name, their WhatsApp number, their
 // message) are inserted as-is and never truncated.
 export function buildWhatsAppMessage({ name, phone, message }: WhatsAppMessageInput): string {
-  return `Hello, I'm ${name} (${phone}). I found your portfolio and wanted to get in touch about the following: "${message}" — I'd like to discuss this further. Looking forward to hearing from you.`
+  return `Hello, I'm ${name} (${phone}). I found your portfolio and wanted to get in touch about the following: "${message}" - I'd like to discuss this further. Looking forward to hearing from you.`
 }
 
 // Standard WhatsApp click-to-chat URL. `destinationNumber` is the portfolio

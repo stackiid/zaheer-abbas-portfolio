@@ -14,7 +14,7 @@ const variants: Record<Variant, string> = {
 }
 
 // A single pill-shaped CTA covers both the nav "CONTACT ME" button and the
-// hero/mobile-nav "RESUME" action — rendered as either an <a> or <button>.
+// hero/mobile-nav "RESUME" action - rendered as either an <a> or <button>.
 export function PillButton(props: AnchorProps | ButtonProps) {
   const { variant = 'solid', className = '', as, ...rest } = props
   const classes = `${base} ${variants[variant]} ${className}`

@@ -92,7 +92,7 @@ export interface ContactConfig {
   eyebrow: string
   heading: string
   intro: string
-  /** Left empty on purpose — wire up a real Formspree endpoint before going live. */
+  /** Left empty on purpose - wire up a real Formspree endpoint before going live. */
   formspreeEndpoint: string
   fields: ContactField[]
   autoHideMs: number

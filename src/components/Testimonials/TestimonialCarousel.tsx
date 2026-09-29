@@ -11,7 +11,7 @@ const SWIPE_THRESHOLD = 40
 // One testimonial visible at a time, in a wide card that reuses the Project
 // Card's own visual language (border, background, rounded-sm corners,
 // typography scale) and the Project Carousel's sliding-track transition,
-// arrow design and swipe/keyboard handling — restyled for a single wide
+// arrow design and swipe/keyboard handling - restyled for a single wide
 // slide, not reinvented. Auto-advances every 20s; looping at the ends
 // (unlike the Project Carousel, which stops there) matches this carousel's
 // pre-existing modulo-index behavior. Entries without quote text are

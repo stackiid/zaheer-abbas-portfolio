@@ -50,7 +50,7 @@ export function StickyHeader() {
 
   // GSAP owns this element's transform from the very first paint. (An inline
   // CSS `translateY(-100%)` would be parsed by GSAP into a fixed pixel `y`
-  // offset that animating `yPercent` never clears — leaving the bar stuck
+  // offset that animating `yPercent` never clears - leaving the bar stuck
   // off-screen even when it should be visible.)
   useLayoutEffect(() => {
     if (barRef.current) gsap.set(barRef.current, { yPercent: -100 })

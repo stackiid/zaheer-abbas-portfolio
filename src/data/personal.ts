@@ -8,7 +8,7 @@ export const personal: PersonalInfo = {
   title: 'Full-Stack Developer',
   tagline: 'React · Next.js · Node.js',
   summary:
-    'I build scalable web applications with React, Next.js and Node.js — from responsive frontends to production-ready APIs and databases.',
+    'I build scalable web applications with React, Next.js and Node.js - from responsive frontends to production-ready APIs and databases.',
   yearsExperience: '2+',
   location: 'Islamabad, Pakistan',
   email: 'Zabbasdev@gmail.com',

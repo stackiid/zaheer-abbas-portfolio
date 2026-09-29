@@ -1,6 +1,6 @@
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-// Lenient international phone check: only the digit count matters (7–15,
+// Lenient international phone check: only the digit count matters (7-15,
 // matching the E.164 max), so real numbers with a leading '+', spaces,
 // dashes or parentheses aren't rejected.
 const PHONE_DIGITS_MIN = 7
@@ -19,7 +19,7 @@ export type FormErrors = Partial<Record<keyof FormValues, string>>
 
 // Required-field + format validation for the dual-mode contact form.
 // Email mode checks name/email/message; WhatsApp mode checks
-// name/phone/message — whichever fields aren't visible in the current mode
+// name/phone/message - whichever fields aren't visible in the current mode
 // are never validated.
 export function validateContactForm(values: FormValues, mode: ContactMode): FormErrors {
   const errors: FormErrors = {}

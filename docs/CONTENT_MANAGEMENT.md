@@ -4,10 +4,10 @@ Everything you'll want to update regularly lives in `src/data/`. You never
 need to touch a component file to change copy, add a project, or remove a
 skill.
 
-## Personal info & social links — `data/personal.ts`
+## Personal info & social links - `data/personal.ts`
 
 Edit `name`, `title`, `tagline`, `location`, `email`, `phone`, `resumeUrl`
-directly. `socials` is an array — add or remove an entry to add/remove an
+directly. `socials` is an array - add or remove an entry to add/remove an
 icon everywhere it's used (hero, mobile nav, footer, contact):
 
 ```ts
@@ -19,14 +19,14 @@ icon everywhere it's used (hero, mobile nav, footer, contact):
 `facebook`). To support a new icon, import it from `@fortawesome` and add it
 to the `iconMap` there.
 
-## About — `data/about.ts`
+## About - `data/about.ts`
 
 `intro` is the paragraph under the heading. `pillars` is the three-column
-list (Frontend / Backend & APIs / Deployment & Maintenance) — add, remove
+list (Frontend / Backend & APIs / Deployment & Maintenance) - add, remove
 or rename entries freely; the grid (`sm:grid-cols-3`) will need a manual
 tweak in `About.tsx` if you go beyond 3 pillars.
 
-## Skills — `data/skills.ts`
+## Skills - `data/skills.ts`
 
 ```ts
 {
@@ -36,18 +36,18 @@ tweak in `About.tsx` if you go beyond 3 pillars.
 ```
 
 Add a new object to add a new category. Add/remove strings in `skills` to
-add/remove individual skills. No icons, percentages or proficiency levels —
+add/remove individual skills. No icons, percentages or proficiency levels -
 keep it that way; the brief explicitly rules those out.
 
-## Experience — `data/experience.ts`
+## Experience - `data/experience.ts`
 
 Each entry has a `type` (`'work' | 'education' | 'certification'`, used for
 the small label above the role), `role`, `organization`, `period`, optional
-`location`, and `points` (bullet list — pass `[]` for entries that don't
+`location`, and `points` (bullet list - pass `[]` for entries that don't
 need bullets, like education/certifications). Entries render in array
-order — put your most relevant entry first.
+order - put your most relevant entry first.
 
-## Projects — `data/projects.ts`
+## Projects - `data/projects.ts`
 
 ```ts
 {
@@ -63,14 +63,14 @@ order — put your most relevant entry first.
 }
 ```
 
-- `image` is a normal Vite asset import — drop a file in
+- `image` is a normal Vite asset import - drop a file in
   `src/assets/projects/` and `import` it at the top of the file.
 - `githubRepoEnabled` / `liveUrlEnabled` independently show or hide each
   link's icon on the card. Leave the URL as `''` when a link is disabled.
-- The carousel handles any number of projects automatically — 1, 2, 3, or
+- The carousel handles any number of projects automatically - 1, 2, 3, or
   20 all work without touching `ProjectCarousel.tsx`.
 
-## Testimonials — `data/testimonials.ts`
+## Testimonials - `data/testimonials.ts`
 
 ```ts
 { id: 'slug', name: 'Full Name', role: 'Title, Company', quote: '' }
@@ -78,11 +78,11 @@ order — put your most relevant entry first.
 
 **The Testimonials section only renders entries with non-empty `quote`
 text**, and the whole section disappears if none qualify. This is
-intentional — placeholder/fake testimonial content was explicitly ruled
+intentional - placeholder/fake testimonial content was explicitly ruled
 out. As soon as you fill in a `quote`, that entry (and the section, if it
 was the first one) appears automatically. No component changes needed.
 
-## Contact form — `data/contact.ts`
+## Contact form - `data/contact.ts`
 
 `formspreeEndpoint` is intentionally empty. To go live:
 
@@ -91,7 +91,7 @@ was the first one) appears automatically. No component changes needed.
 2. Paste it into `formspreeEndpoint` in `data/contact.ts`.
 
 Until it's set, submitting the form runs full validation but shows an
-informational toast instead of sending anything — see
+informational toast instead of sending anything - see
 `src/components/Contact/ContactForm.tsx`. `fields` drives which inputs
 render and their placeholders/`required` state; reordering or editing that
 array changes the form without touching `ContactForm.tsx`.

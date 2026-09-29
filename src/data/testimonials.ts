@@ -1,7 +1,7 @@
 import type { Testimonial } from "@/types";
 
 // Names and roles are confirmed; quotes are intentionally left blank until
-// Zaheer supplies the actual testimonial text — see docs/CONTENT_MANAGEMENT.md.
+// Zaheer supplies the actual testimonial text - see docs/CONTENT_MANAGEMENT.md.
 // TestimonialCarousel only renders entries that have a non-empty `quote`.
 export const testimonials: Testimonial[] = [
   {
@@ -9,7 +9,7 @@ export const testimonials: Testimonial[] = [
     name: "Muhammad Dawood",
     role: "Former DevOps Intern, TechCreator · FYP teammate",
     quote:
-      "Having worked with Zaheer across multiple projects - including our Final Year Project—I can attest to his exceptional full-stack capabilities and problem-solving drive. He takes complete ownership of complex application logic and system architecture, ensuring everything operates smoothly under the hood. Zaheer is a dedicated teammate who consistently brings clarity, technical depth, and strong execution to every build.",
+      "Having worked with Zaheer across multiple projects - including our Final Year Project - I can attest to his exceptional full-stack capabilities and problem-solving drive. He takes complete ownership of complex application logic and system architecture, ensuring everything operates smoothly under the hood. Zaheer is a dedicated teammate who consistently brings clarity, technical depth, and strong execution to every build.",
   },
   {
     id: "ubaid-ahmad",

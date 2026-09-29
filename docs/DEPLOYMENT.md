@@ -7,8 +7,7 @@ common platforms are included.
 ## Vercel
 
 `vercel.json` sets the build command and output directory. Import the repo
-in the Vercel dashboard (or run `vercel`), no further configuration needed
-— it auto-detects Vite and uses `vercel.json` for the SPA rewrite.
+in the Vercel dashboard (or run `vercel`), no further configuration needed - it auto-detects Vite and uses `vercel.json` for the SPA rewrite.
 
 ## Netlify
 
@@ -25,7 +24,7 @@ using `actions/deploy-pages`. One manual step is required first:
 2. Push to `main` (or run the workflow manually from the **Actions** tab).
 
 GitHub Pages serves project sites from `https://<user>.github.io/<repo>/`,
-a sub-path — not the domain root. The workflow sets `VITE_BASE_PATH` to
+a sub-path - not the domain root. The workflow sets `VITE_BASE_PATH` to
 `/<repo-name>/` at build time (`vite.config.ts` reads it via
 `process.env.VITE_BASE_PATH`) so every asset URL resolves correctly under
 that sub-path. Vercel and Netlify serve from the domain root, so they don't
@@ -42,7 +41,7 @@ npm run preview
 ## Environment variables
 
 None are required for a basic deployment. The only build-time variable is
-`VITE_BASE_PATH`, described above, and it's optional — it defaults to `/`.
+`VITE_BASE_PATH`, described above, and it's optional - it defaults to `/`.
 
 ## Custom domain
 

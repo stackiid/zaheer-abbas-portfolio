@@ -1,6 +1,6 @@
 import type { ExperienceItem } from '@/types'
 
-// Rendered as a vertical timeline, oldest to newest is not required —
+// Rendered as a vertical timeline, oldest to newest is not required -
 // entries render in this array's order. Add/remove freely.
 export const experience: ExperienceItem[] = [
   {
@@ -8,7 +8,7 @@ export const experience: ExperienceItem[] = [
     type: 'work',
     role: 'Full-Stack Developer',
     organization: 'Self-Employed',
-    period: '2024 — Present',
+    period: '2024 - Present',
     location: 'Remote',
     points: [
       'Designed and developed responsive web applications for clients across logistics, corporate, automotive and technology sectors.',
@@ -23,7 +23,7 @@ export const experience: ExperienceItem[] = [
     type: 'education',
     role: 'Bachelor of Science in Computer Science',
     organization: 'University of Swabi',
-    period: '2022 — 2026',
+    period: '2022 - 2026',
     points: [],
   },
   {

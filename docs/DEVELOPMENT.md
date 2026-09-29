@@ -17,7 +17,7 @@ npm run preview   # serve the production build locally
 
 ## Before committing
 
-Run both of these — CI (`.github/workflows/deploy.yml`) runs the same
+Run both of these - CI (`.github/workflows/deploy.yml`) runs the same
 checks and will fail the build otherwise:
 
 ```bash
@@ -27,7 +27,7 @@ npm run build
 
 ## Linting
 
-This project uses **oxlint**, not ESLint — there is no `.eslintrc` and none
+This project uses **oxlint**, not ESLint - there is no `.eslintrc` and none
 should be added. oxlint is configured with its defaults; if you need to
 adjust a rule, add an `.oxlintrc.json` rather than reaching for ESLint.
 
@@ -51,20 +51,20 @@ relative `../../` imports.
 
 ## Browser support
 
-Targets evergreen browsers (Chrome, Firefox, Safari, Edge — last 2
+Targets evergreen browsers (Chrome, Firefox, Safari, Edge - last 2
 versions). No IE11/legacy support; the build targets `ES2023` per
 `tsconfig.app.json`.
 
 ## Troubleshooting
 
-- **Fonts look wrong / fall back to system sans** — check that
+- **Fonts look wrong / fall back to system sans** - check that
   `fonts.googleapis.com` and `fonts.gstatic.com` aren't blocked by an
   ad-blocker or offline dev environment; there's no local font fallback
   bundled.
-- **Mobile nav panel appears behind other content** — it's rendered with
+- **Mobile nav panel appears behind other content** - it's rendered with
   `z-50`/`z-40`; if you add a new fixed-position element with a higher
   z-index, it will need to sit below that.
-- **GSAP animations don't run in dev but do in build (or vice versa)** —
+- **GSAP animations don't run in dev but do in build (or vice versa)** -
   check `usePrefersReducedMotion()`; most animation hooks short-circuit
   when the OS-level reduced-motion setting is on, which some browsers'
   dev tools let you simulate and forget to turn back off.
