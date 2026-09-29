@@ -34,7 +34,7 @@ export function SocialLinks({ links, variant = 'dark', size = 'md' }: SocialLink
             target={link.icon === 'email' ? undefined : '_blank'}
             rel={link.icon === 'email' ? undefined : 'noreferrer'}
             aria-label={link.label}
-            className={`flex ${box} items-center justify-center rounded-full border transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 ${palette}`}
+            className={`flex ${box} items-center justify-center border transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 ${palette}`}
           >
             <FontAwesomeIcon icon={iconMap[link.icon]} />
           </a>

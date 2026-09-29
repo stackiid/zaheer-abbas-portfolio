@@ -6,15 +6,15 @@ type AnchorProps = { as?: 'a'; variant?: Variant } & AnchorHTMLAttributes<HTMLAn
 type ButtonProps = { as: 'button'; variant?: Variant } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const base =
-  'inline-flex items-center justify-center rounded-full px-6 py-3 font-display text-xs font-bold tracking-[0.2em] transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0'
+  'inline-flex items-center justify-center px-6 py-3 font-display text-xs font-bold tracking-[0.2em] transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0'
 
 const variants: Record<Variant, string> = {
   solid: 'bg-ink text-paper hover:bg-ink-soft',
   outline: 'border border-current text-ink hover:bg-ink hover:text-paper',
 }
 
-// A single pill-shaped CTA covers both the nav "CONTACT ME" button and the
-// hero/mobile-nav "RESUME" action - rendered as either an <a> or <button>.
+// A sharp-cornered CTA used for the nav "CONTACT ME" button - rendered as
+// either an <a> or <button>.
 export function PillButton(props: AnchorProps | ButtonProps) {
   const { variant = 'solid', className = '', as, ...rest } = props
   const classes = `${base} ${variants[variant]} ${className}`

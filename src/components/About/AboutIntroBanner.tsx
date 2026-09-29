@@ -13,17 +13,15 @@ export function AboutIntroBanner() {
     <div className="relative overflow-hidden bg-[#1d1d1d] py-10 sm:py-12 lg:py-14">
       <svg
         aria-hidden="true"
-        viewBox="0 0 34 34"
+        viewBox="0 0 64 64"
         className="pointer-events-none absolute -right-10 top-1/2 hidden h-56 w-56 -translate-y-1/2 text-cloud/10 lg:block xl:-right-6 xl:h-72 xl:w-72"
       >
-        <path
-          d="M6 8h20l-15 18h20"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
+        <g fill="currentColor">
+          <path d="M11.55 15.35 L24.8 15.35 L20.25 23.72 L16.11 23.72Z" />
+          <path d="M29.45 15.35 L38.92 15.35 L21.03 48.65 L11.6 48.65Z" />
+          <path d="M39.24 24.09 L52.45 48.65 L43.02 48.65 L34.51 32.83Z" />
+          <path d="M30.09 40.33 L33.86 40.33 L38.33 48.65 L25.68 48.65Z" />
+        </g>
       </svg>
 
       <Container>

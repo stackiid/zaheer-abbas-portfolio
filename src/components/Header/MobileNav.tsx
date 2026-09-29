@@ -132,7 +132,7 @@ export function MobileNav({ open, onClose, links, resumeUrl }: MobileNavProps) {
             download="Zaheer-Abbas-Resume.pdf"
             target="_blank"
             rel="noreferrer"
-            className="flex w-full items-center justify-center gap-3 rounded-full border border-cloud bg-cloud px-6 py-4 font-display text-sm font-bold uppercase tracking-[0.2em] text-ink shadow-[0_6px_0_0_rgba(246,246,245,0.12)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-transparent hover:text-cloud active:translate-y-0 active:scale-[0.98]"
+            className="flex w-full items-center justify-center gap-3 border border-cloud bg-cloud px-6 py-4 font-display text-sm font-bold uppercase tracking-[0.2em] text-ink shadow-[0_6px_0_0_rgba(246,246,245,0.12)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-transparent hover:text-cloud active:translate-y-0 active:scale-[0.98]"
           >
             <FontAwesomeIcon icon={faDownload} className="text-base" aria-hidden="true" />
             Download Resume
