@@ -15,9 +15,10 @@ export const personal: PersonalInfo = {
   phone: '+92 313 9804929',
   // Resolved against Vite's `base` (set from VITE_BASE_PATH), so it works both
   // at the domain root and under a GitHub Pages `/<repo-name>/` sub-path.
-  // A bare '/Zaheer-Abbas-Resume.pdf' ignores the base and 404s in production.
-  // The file lives in public/ and is copied verbatim into the build output.
-  resumeUrl: `${import.meta.env.BASE_URL}Zaheer-Abbas-Resume.pdf`,
+  // A bare '/assets/resume/Zaheer-Abbas-Resume.pdf' would ignore the base and
+  // 404 in production. The file lives in public/assets/resume/ and is copied
+  // verbatim into the build output.
+  resumeUrl: `${import.meta.env.BASE_URL}assets/resume/Zaheer-Abbas-Resume.pdf`,
   socials: [
     { id: 'email', label: 'Email', href: 'mailto:Zabbasdev@gmail.com', icon: 'email' },
     { id: 'github', label: 'GitHub', href: 'https://github.com/zaheerabbasdev', icon: 'github' },

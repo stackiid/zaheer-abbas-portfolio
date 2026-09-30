@@ -98,7 +98,7 @@ array changes the form without touching `ContactForm.tsx`.
 
 ## Resume
 
-Replace `public/Zaheer-Abbas-Resume.pdf` with a new file of the **same
+Replace `public/assets/resume/Zaheer-Abbas-Resume.pdf` with a new file of the **same
 name** to update the downloadable resume without touching any code. If you
 rename the file, update `personal.resumeUrl` in `data/personal.ts` to
 match.

@@ -97,7 +97,7 @@ export function MobileNav({ open, onClose, links, resumeUrl }: MobileNavProps) {
         aria-label="Site navigation"
         className="on-dark fixed inset-y-0 left-0 z-50 flex w-[80%] max-w-sm flex-col bg-ink text-cloud lg:hidden"
       >
-        <div className="flex items-center justify-between px-7 py-6">
+        <div className="flex items-center justify-between px-7 py-3">
           <Logo />
           <button
             type="button"

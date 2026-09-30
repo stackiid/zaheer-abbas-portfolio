@@ -19,7 +19,7 @@ export function HeaderBarContent({ variant, menuOpen, onOpenMenu, focusable = tr
   const tabIndex = focusable ? undefined : -1
 
   return (
-    <div className="flex items-center justify-between px-6 py-6 text-cloud sm:px-10 lg:px-12">
+    <div className="flex items-center justify-between px-6 py-3 text-cloud sm:px-10 lg:px-12">
       <span className={variant === 'hero' ? 'text-cloud lg:text-ink' : 'text-cloud'}>
         <Logo tabIndex={tabIndex} />
       </span>
